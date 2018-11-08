@@ -1,0 +1,20 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Sep 11, 2018, 10:37:50 AM
+    Author     : mattp
+*/
+
+.root {
+    -fx-background-image: url("https://pre00.deviantart.net/18cd/th/pre/i/2015/077/9/6/red_texture_by_lg_design-d8m1km6.jpg");
+    -fx-focus-color: transparent; 
+}
+
+.mainButtonArchtype:hover {
+    -fx-background-color:#353535;
+    -fx-text-fill: white;
+}
+
