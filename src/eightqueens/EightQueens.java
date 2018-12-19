@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package eightqueens;
 
 import javafx.application.Application;
@@ -28,7 +24,7 @@ public class EightQueens extends Application {
     
     @Override
     public void start(Stage primaryStage) {
-        
+
         startMainMenu();
         
         Scene scene = new Scene(root, 650, 800);
@@ -83,10 +79,10 @@ public class EightQueens extends Application {
             {
                 Button btn = new Button();
                 btn.setOnAction(e -> {
-                   int row = gameGrid.getRowIndex(btn);
-                   int column = gameGrid.getColumnIndex(btn);
-                   if(gameBoard.boardArray[row][column])
-                   {
+                    int row = gameGrid.getRowIndex(btn);
+                    int column = gameGrid.getColumnIndex(btn);
+                    if(gameBoard.boardArray[row][column]) //on press of tile that is already a queen
+                    {
                         gameBoard.boardArray[row][column] = false;
                         btn.setGraphic(null);
                         gameBoard.numLeft++;
@@ -94,9 +90,9 @@ public class EightQueens extends Application {
                         img.setFitHeight(500/dim - 2.5);
                         img.setFitWidth(500/dim - 2.5);
                         queensNumberBox.getChildren().set(gameBoard.numLeft-1, img);
-                   }
-                   else
-                   {
+                    }
+                    else //on press of empty tile
+                    {
                         if(gameBoard.numLeft > 0)
                         {
                             gameBoard.boardArray[row][column] = true;
@@ -111,9 +107,11 @@ public class EightQueens extends Application {
                             img.setFitWidth(500/dim - 2.5);
                             queensNumberBox.getChildren().set(gameBoard.numLeft, img);
                         }
-                   }
-                   if(gameBoard.checkCorrect() && gameBoard.numLeft == 0) //win sequence
-                   {
+                    }
+                   
+                    //checking and displaying win sequence
+                    if(gameBoard.checkCorrect() && gameBoard.numLeft == 0) 
+                    {
                         Label winLabel = new Label("Congrats you've won!");
                         winLabel.setAlignment(Pos.CENTER);
                         winLabel.setPrefSize(500, 100);
@@ -125,7 +123,7 @@ public class EightQueens extends Application {
                         backButtonAlignmentBox.setAlignment(Pos.CENTER);
                         root.getChildren().clear();
                         root.getChildren().add(winLayoutBox);
-                   }
+                    }
                 });
                 btn.setPrefSize(500/dim - 2.5, 500/dim - 2.5);
                 GridPane.setConstraints(btn, i, j);
@@ -150,7 +148,7 @@ public class EightQueens extends Application {
     }
     
     public static void startMainMenu(){
-        //component instantiation
+        //instantiation of main menu elements
         Label titleLabel = new Label("Eight Queens Puzzle");
         Button fourQueensButton = new Button("Four Queens");
         Button fiveQueensButton = new Button("Five Queens");
@@ -158,38 +156,28 @@ public class EightQueens extends Application {
         Button sevenQueensButton = new Button("Seven Queens");
         Button eightQueensButton = new Button("Eight Queens");
         Button aboutPageButton = new Button("About");
-        VBox mainMenuBox = new VBox(33, titleLabel, fourQueensButton,fiveQueensButton, sixQueensButton, sevenQueensButton, eightQueensButton, aboutPageButton);
+        
+        //main menu vbox initialization and manipulation
+        VBox mainMenuBox = new VBox(33, titleLabel, fourQueensButton,fiveQueensButton, 
+            sixQueensButton, sevenQueensButton, eightQueensButton, aboutPageButton);
         mainMenuBox.setAlignment(Pos.CENTER);
         titleLabel.setAlignment(Pos.CENTER);
         
-        //component setup
+        //main menu title bar manipulation 
         titleLabel.setPrefSize(500, 100);
         titleLabel.setFont(Font.font("paletino", FontWeight.BOLD, 50));
         titleLabel.setTextFill(Paint.valueOf("ffffff"));
-        fourQueensButton.setPrefSize(350, 60);
-        fourQueensButton.setFont(Font.font("paletino", FontWeight.BOLD, 30));
-        fourQueensButton.setTextFill(Paint.valueOf("353535"));
-        fourQueensButton.getStyleClass().add("mainButtonArchtype");
-        fiveQueensButton.setPrefSize(350, 60);
-        fiveQueensButton.setFont(Font.font("paletino", FontWeight.BOLD, 30));
-        fiveQueensButton.setTextFill(Paint.valueOf("353535"));
-        fiveQueensButton.getStyleClass().add("mainButtonArchtype");
-        sixQueensButton.setPrefSize(350, 60);
-        sixQueensButton.setFont(Font.font("paletino", FontWeight.BOLD, 30));
-        sixQueensButton.setTextFill(Paint.valueOf("353535"));
-        sixQueensButton.getStyleClass().add("mainButtonArchtype");
-        sevenQueensButton.setPrefSize(350, 60);
-        sevenQueensButton.setFont(Font.font("paletino", FontWeight.BOLD, 30));
-        sevenQueensButton.setTextFill(Paint.valueOf("353535"));
-        sevenQueensButton.getStyleClass().add("mainButtonArchtype");
-        eightQueensButton.setPrefSize(350, 60);
-        eightQueensButton.setFont(Font.font("paletino", FontWeight.BOLD, 30));
-        eightQueensButton.setTextFill(Paint.valueOf("353535"));
-        eightQueensButton.getStyleClass().add("mainButtonArchtype");
-        aboutPageButton.setPrefSize(350, 60);
-        aboutPageButton.setFont(Font.font("paletino", FontWeight.BOLD, 30));
-        aboutPageButton.setTextFill(Paint.valueOf("353535"));
-        aboutPageButton.getStyleClass().add("mainButtonArchtype");
+        
+        //main menu object manipulation
+        Button[] setupArray = {fourQueensButton, fiveQueensButton, sixQueensButton, 
+            sevenQueensButton, eightQueensButton, aboutPageButton};
+        for(int i = 0; i < setupArray.length; i++)
+        {
+            setupArray[i].setPrefSize(350, 60);
+            setupArray[i].setFont(Font.font("paletino", FontWeight.BOLD, 30));
+            setupArray[i].setTextFill(Paint.valueOf("353535"));
+            setupArray[i].getStyleClass().add("mainButtonArchtype");
+        }
         
         //display
         root.getChildren().add(mainMenuBox);
