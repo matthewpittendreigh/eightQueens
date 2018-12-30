@@ -141,13 +141,15 @@ public class EightQueens extends Application {
         //button handlers
         mainMenuButton.setOnAction(e -> {
             
-            root.getChildren().clear();
             startMainMenu();
         
         });
     }
     
     public static void startMainMenu(){
+        //clear pane elements
+        root.getChildren().clear();
+        
         //instantiation of main menu elements
         Label titleLabel = new Label("Eight Queens Puzzle");
         Button fourQueensButton = new Button("Four Queens");
@@ -193,6 +195,44 @@ public class EightQueens extends Application {
     
     public static void startAboutPage()
     {
+        //clear pane elements
+        root.getChildren().clear();
         
+        //back button setup
+        ImageView backImageView = new ImageView("images/backIcon3.png");
+        backImageView.setFitHeight(48);
+        backImageView.setFitWidth(48);
+        Button mainMenuButton = new Button("  Return to Main Menu", backImageView);
+        mainMenuButton.setPrefSize(300, 60);
+        mainMenuButton.setFont(Font.font("paletino", FontWeight.BOLD, 20));
+        mainMenuButton.setTextFill(Paint.valueOf("353535"));
+        mainMenuButton.setId("mainMenuButton");
+        HBox backButtonAlignmentBox = new HBox(mainMenuButton);
+        backButtonAlignmentBox.setPadding(new Insets(30,0,10,40));
+        backButtonAlignmentBox.setAlignment(Pos.TOP_LEFT);
+        
+        //button handlers
+        mainMenuButton.setOnAction(e -> {
+            
+            startMainMenu();
+        
+        });
+        
+        //about page label manipulation 
+        Label titleLabel = new Label("About the Eight Queens Puzzle");
+        titleLabel.setPrefSize(500, 100);
+        titleLabel.setFont(Font.font("paletino", FontWeight.BOLD, 30));
+        titleLabel.setTextFill(Paint.valueOf("ffffff"));
+        titleLabel.setAlignment(Pos.CENTER);
+        
+        //text box setup and manipulation
+        
+        //about page vbox initialization and manipulation
+        VBox aboutPageBox = new VBox(20,backButtonAlignmentBox,titleLabel);
+        aboutPageBox.setAlignment(Pos.CENTER);
+        
+        root.getChildren().add(aboutPageBox);
+        
+        //
     }
 }
