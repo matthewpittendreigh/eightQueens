@@ -244,7 +244,7 @@ public class EightQueens extends Application {
         solutionImageView.setFitWidth(275);
         
         Label textBox2 = new Label("Here is a solution to the Eight Queens Problem. "
-        + "There are 92 total solutions, however most of these are relections or "
+        + "There are 92 total solutions, however most of these are reflections or "
         + "rotations of other solutions. Excluding these repeats there are 12 "
         + "distinct solutions.");
         textBox2.setPadding(textBoxPadding);
