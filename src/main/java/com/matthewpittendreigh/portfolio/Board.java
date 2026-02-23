@@ -1,5 +1,4 @@
-
-package eightqueens;
+package com.matthewpittendreigh.portfolio;
 
 public class Board {
     

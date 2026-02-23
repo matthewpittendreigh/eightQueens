@@ -1,5 +1,4 @@
-
-package eightqueens;
+package com.matthewpittendreigh.portfolio;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -28,7 +27,7 @@ public class EightQueens extends Application {
         startMainMenu();
         
         Scene scene = new Scene(root, 650, 800);
-        scene.getStylesheets().add(getClass().getResource("EightQueensStyle.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getClassLoader().getResource("EightQueensStyle.css").toExternalForm());
         primaryStage.setTitle("Eight Queens");
         primaryStage.setScene(scene);
         primaryStage.show();
