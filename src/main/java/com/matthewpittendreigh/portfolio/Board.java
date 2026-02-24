@@ -9,10 +9,6 @@ public class Board {
     public Board(int dim)
     {
         this.dim = dim;
-    }
-    
-    public void initialize()
-    {
         numLeft = dim;
         
         boardArray = new boolean[dim][dim];
