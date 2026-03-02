@@ -1,11 +1,15 @@
 package com.matthewpittendreigh.portfolio;
 
+
 public class GameController {
     private Board gameBoard;
+    private GameView gameView;
 
     public GameController(int dim) {
         // Board object initialization
         gameBoard = new Board(dim);
+        gameView = new GameView(this);
+        gameView.renderGame(EightQueens.root);
     }
     
     public int getDimension() {
@@ -19,6 +23,7 @@ public class GameController {
             gameBoard.numLeft++;
             
             // Call gameview remove piece
+            gameView.removeQueen(row, column, gameBoard.numLeft);
         }
         else //on press of empty tile
         {
@@ -27,8 +32,23 @@ public class GameController {
                 gameBoard.boardArray[row][column] = true;
                 gameBoard.numLeft--;
                 
+                if(gameBoard.numLeft == 0)
+                {
+                    checkWinState();
+                }
+
                 // Call gameview place piece
+                gameView.placeQueen(row, column, gameBoard.numLeft);
             }
+        }
+    }
+
+    // Check for win-state
+    public void checkWinState() {
+        //checking and displaying win sequence
+        if(gameBoard.checkCorrect()) 
+        {
+            PrimaryController.startWin();
         }
     }
 }
